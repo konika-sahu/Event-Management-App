@@ -13,7 +13,11 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::apiResource('events', EventController::class);
+// Open routes (no middleware applied)
+Route::apiResource('events', EventController::class)->only(['index', 'show']);
+// Protected routes (middleware applied)
+Route::apiResource('events', EventController::class)->except(['index', 'show'])->middleware('auth:sanctum');
+
 Route::apiResource('events.attendees', AttendeeController::class)
     -> scoped() -> except( [ 'update' ] );
 
