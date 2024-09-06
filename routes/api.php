@@ -13,6 +13,8 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::post('/logout', [AuthController::class, 'logout']) ->middleware('auth:sanctum');
+
 // Open routes (no middleware applied)
 Route::apiResource('events', EventController::class)->only(['index', 'show']);
 // Protected routes (middleware applied)
