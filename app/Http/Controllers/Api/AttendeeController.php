@@ -55,7 +55,7 @@ class AttendeeController extends Controller
      */
     public function destroy(Event $event, Attendee $attendee)
     {   
-        if(Gate::denies('delete_attendee', [$event, $attendee] )){
+        if(Gate::denies('delete-attendee', [$event, $attendee])){
             abort(403, 'You are not authorized to delete an attendee');
         }
 
