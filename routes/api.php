@@ -23,9 +23,4 @@ Route::apiResource('events', EventController::class)->except(['index', 'show'])-
 
 // Public routes (actions that don't require authentication)
 Route::apiResource('events.attendees', AttendeeController::class)
-    -> scoped() -> except( [ 'update', 'destroy'] ); 
-
-// Authenticated route for 'destroy' action
-Route::middleware('auth:sanctum')->group(function () {
-    Route::delete('events/{event}/attendees/{attendee}', [AttendeeController::class, 'destroy']);
-});
+    -> scoped() -> except( [ 'update'] ); 
